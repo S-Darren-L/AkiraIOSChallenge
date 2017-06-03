@@ -30,7 +30,7 @@
         <!--Chat-->
         <scene sceneID="P2B-yQ-SqR">
             <objects>
-                <viewController id="hRR-r9-R7O" sceneMemberID="viewController">
+                <viewController id="hRR-r9-R7O" customClass="ChatViewController" customModule="AkiraIOSChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RO3-pb-Hum"/>
                         <viewControllerLayoutGuide type="bottom" id="Idz-hp-INE"/>
@@ -38,13 +38,39 @@
                     <view key="view" contentMode="scaleToFill" id="SiJ-P2-Jy9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yQB-s9-aoh">
+                                <rect key="frame" x="65" y="566" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TaM-ET-u25">
+                                <rect key="frame" x="16" y="20" width="343" height="537"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gkt-Tb-ovS">
+                                <rect key="frame" x="251" y="565" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Chat" image="ic_chat_48pt" id="aIx-tq-XXi"/>
+                    <tabBarItem key="tabBarItem" title="Chat" image="ic_chat" id="aIx-tq-XXi"/>
+                    <connections>
+                        <outlet property="chatInputTextField" destination="yQB-s9-aoh" id="pK6-zu-bzl"/>
+                        <outlet property="chatReceivedTextView" destination="TaM-ET-u25" id="25p-Bu-eAN"/>
+                        <outlet property="sendButton" destination="Gkt-Tb-ovS" id="mTN-4z-srW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgx-PQ-BSX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-602" y="98"/>
+            <point key="canvasLocation" x="-602.39999999999998" y="97.601199400299862"/>
         </scene>
         <!--Video-->
         <scene sceneID="tne-QT-ifu">
@@ -59,7 +85,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Video" image="ic_voice_chat_48pt" id="a7x-Gs-2j5"/>
+                    <tabBarItem key="tabBarItem" title="Video" image="ic_video_chat" id="a7x-Gs-2j5"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -67,7 +93,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_chat_48pt" width="48" height="48"/>
-        <image name="ic_voice_chat_48pt" width="48" height="48"/>
+        <image name="ic_chat" width="29" height="29"/>
+        <image name="ic_video_chat" width="29" height="29"/>
     </resources>
 </document>

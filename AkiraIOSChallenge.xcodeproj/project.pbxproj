@@ -16,6 +16,8 @@
 		952ED9B51EDF855200B2CE9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 952ED9B31EDF855200B2CE9A /* LaunchScreen.storyboard */; };
 		952ED9C01EDF855200B2CE9A /* AkiraIOSChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ED9BF1EDF855200B2CE9A /* AkiraIOSChallengeTests.swift */; };
 		952ED9CB1EDF855200B2CE9A /* AkiraIOSChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ED9CA1EDF855200B2CE9A /* AkiraIOSChallengeUITests.swift */; };
+		9536E6C41EE2487C006F4DFF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9536E6C31EE2487C006F4DFF /* Constants.swift */; };
+		95BDFB211EE0FD5800EBD56A /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BDFB201EE0FD5800EBD56A /* ChatViewController.swift */; };
 		972213FD5738D198073718A8 /* Pods_AkiraIOSChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845E4AC3264238F52672C1AD /* Pods_AkiraIOSChallengeTests.framework */; };
 		C8AFFD5D299972ADAB2FEB75 /* Pods_AkiraIOSChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 851FD6B000FE443B57188BF0 /* Pods_AkiraIOSChallengeUITests.framework */; };
 /* End PBXBuildFile section */
@@ -59,6 +61,8 @@
 		952ED9C61EDF855200B2CE9A /* AkiraIOSChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AkiraIOSChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		952ED9CA1EDF855200B2CE9A /* AkiraIOSChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AkiraIOSChallengeUITests.swift; sourceTree = "<group>"; };
 		952ED9CC1EDF855200B2CE9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9536E6C31EE2487C006F4DFF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		95BDFB201EE0FD5800EBD56A /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		9621AF6DCA5EFCA3638D8A7C /* Pods-AkiraIOSChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AkiraIOSChallengeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AkiraIOSChallengeTests/Pods-AkiraIOSChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 		A2525A9019F923D406D23A87 /* Pods-AkiraIOSChallengeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AkiraIOSChallengeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AkiraIOSChallengeUITests/Pods-AkiraIOSChallengeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				952ED9A91EDF855200B2CE9A /* VideoViewController.swift */,
+				95BDFB201EE0FD5800EBD56A /* ChatViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -181,6 +186,7 @@
 				952ED9B31EDF855200B2CE9A /* LaunchScreen.storyboard */,
 				952ED9B61EDF855200B2CE9A /* Info.plist */,
 				952ED9AE1EDF855200B2CE9A /* AkiraIOSChallenge.xcdatamodeld */,
+				9536E6C31EE2487C006F4DFF /* Constants.swift */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -492,8 +498,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9536E6C41EE2487C006F4DFF /* Constants.swift in Sources */,
 				952ED9B01EDF855200B2CE9A /* AkiraIOSChallenge.xcdatamodeld in Sources */,
 				952ED9AA1EDF855200B2CE9A /* VideoViewController.swift in Sources */,
+				95BDFB211EE0FD5800EBD56A /* ChatViewController.swift in Sources */,
 				952ED9A81EDF855200B2CE9A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

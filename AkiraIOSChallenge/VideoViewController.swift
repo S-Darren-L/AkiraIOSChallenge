@@ -25,7 +25,6 @@ class VideoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         connectToAnOpenTokSession()
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     func connectToAnOpenTokSession() {
@@ -60,7 +59,7 @@ extension VideoViewController: OTSessionDelegate {
             return
         }
         let screenBounds = UIScreen.main.bounds
-        publisherView.frame = CGRect(x: screenBounds.width - 150 - 20, y: screenBounds.height - 150 - 20, width: 150, height: 150)
+        publisherView.frame = CGRect(x: screenBounds.width - 150 - 20, y: screenBounds.height - 150 - 70, width: 150, height: 150)
         view.addSubview(publisherView)
     }
     
@@ -89,7 +88,10 @@ extension VideoViewController: OTSessionDelegate {
         guard let subscriberView = subscriber.view else {
             return
         }
-        subscriberView.frame = UIScreen.main.bounds
+        
+        let screenBounds = UIScreen.main.bounds
+        subscriberView.frame = CGRect(x: 0, y: 0, width: screenBounds.width, height: screenBounds.height - 50)
+//            UIScreen.main.bounds
         view.insertSubview(subscriberView, at: 0)
     }
     
