@@ -9,8 +9,6 @@
 import UIKit
 import OpenTok
 
-let kWidgetRatio: CGFloat = 1.333
-
 // Replace with your OpenTok API key
 let kApiKey = "45880472"
 // Replace with your generated session ID
