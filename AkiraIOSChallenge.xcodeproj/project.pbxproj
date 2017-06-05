@@ -17,6 +17,12 @@
 		952ED9C01EDF855200B2CE9A /* AkiraIOSChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ED9BF1EDF855200B2CE9A /* AkiraIOSChallengeTests.swift */; };
 		952ED9CB1EDF855200B2CE9A /* AkiraIOSChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952ED9CA1EDF855200B2CE9A /* AkiraIOSChallengeUITests.swift */; };
 		9536E6C41EE2487C006F4DFF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9536E6C31EE2487C006F4DFF /* Constants.swift */; };
+		9536E6C61EE49612006F4DFF /* DefaultAudioDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9536E6C51EE49612006F4DFF /* DefaultAudioDevice.swift */; };
+		9536E6C81EE4A4CB006F4DFF /* CustomizedPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9536E6C71EE4A4CB006F4DFF /* CustomizedPublisher.swift */; };
+		9536E6CA1EE4A4FD006F4DFF /* CustomizedVideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9536E6C91EE4A4FD006F4DFF /* CustomizedVideoCapture.swift */; };
+		9536E6CC1EE4A511006F4DFF /* CustomizedVideoRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9536E6CB1EE4A511006F4DFF /* CustomizedVideoRender.swift */; };
+		9536E6CE1EE4A5A6006F4DFF /* EAGLVideoRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9536E6CD1EE4A5A6006F4DFF /* EAGLVideoRenderer.swift */; };
+		9536E6D01EE4B2EA006F4DFF /* MultipartyLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9536E6CF1EE4B2EA006F4DFF /* MultipartyLayout.swift */; };
 		95BDFB211EE0FD5800EBD56A /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BDFB201EE0FD5800EBD56A /* ChatViewController.swift */; };
 		972213FD5738D198073718A8 /* Pods_AkiraIOSChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845E4AC3264238F52672C1AD /* Pods_AkiraIOSChallengeTests.framework */; };
 		C8AFFD5D299972ADAB2FEB75 /* Pods_AkiraIOSChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 851FD6B000FE443B57188BF0 /* Pods_AkiraIOSChallengeUITests.framework */; };
@@ -62,6 +68,12 @@
 		952ED9CA1EDF855200B2CE9A /* AkiraIOSChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AkiraIOSChallengeUITests.swift; sourceTree = "<group>"; };
 		952ED9CC1EDF855200B2CE9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9536E6C31EE2487C006F4DFF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9536E6C51EE49612006F4DFF /* DefaultAudioDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultAudioDevice.swift; sourceTree = "<group>"; };
+		9536E6C71EE4A4CB006F4DFF /* CustomizedPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizedPublisher.swift; sourceTree = "<group>"; };
+		9536E6C91EE4A4FD006F4DFF /* CustomizedVideoCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizedVideoCapture.swift; sourceTree = "<group>"; };
+		9536E6CB1EE4A511006F4DFF /* CustomizedVideoRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizedVideoRender.swift; sourceTree = "<group>"; };
+		9536E6CD1EE4A5A6006F4DFF /* EAGLVideoRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EAGLVideoRenderer.swift; sourceTree = "<group>"; };
+		9536E6CF1EE4B2EA006F4DFF /* MultipartyLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipartyLayout.swift; sourceTree = "<group>"; };
 		95BDFB201EE0FD5800EBD56A /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		9621AF6DCA5EFCA3638D8A7C /* Pods-AkiraIOSChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AkiraIOSChallengeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AkiraIOSChallengeTests/Pods-AkiraIOSChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 		A2525A9019F923D406D23A87 /* Pods-AkiraIOSChallengeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AkiraIOSChallengeUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AkiraIOSChallengeUITests/Pods-AkiraIOSChallengeUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -160,6 +172,7 @@
 			children = (
 				952ED9A91EDF855200B2CE9A /* VideoViewController.swift */,
 				95BDFB201EE0FD5800EBD56A /* ChatViewController.swift */,
+				9536E6CF1EE4B2EA006F4DFF /* MultipartyLayout.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -174,6 +187,11 @@
 		952ED9DB1EDF858F00B2CE9A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				9536E6C51EE49612006F4DFF /* DefaultAudioDevice.swift */,
+				9536E6C71EE4A4CB006F4DFF /* CustomizedPublisher.swift */,
+				9536E6C91EE4A4FD006F4DFF /* CustomizedVideoCapture.swift */,
+				9536E6CB1EE4A511006F4DFF /* CustomizedVideoRender.swift */,
+				9536E6CD1EE4A5A6006F4DFF /* EAGLVideoRenderer.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -499,10 +517,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				9536E6C41EE2487C006F4DFF /* Constants.swift in Sources */,
+				9536E6CA1EE4A4FD006F4DFF /* CustomizedVideoCapture.swift in Sources */,
 				952ED9B01EDF855200B2CE9A /* AkiraIOSChallenge.xcdatamodeld in Sources */,
 				952ED9AA1EDF855200B2CE9A /* VideoViewController.swift in Sources */,
 				95BDFB211EE0FD5800EBD56A /* ChatViewController.swift in Sources */,
+				9536E6C61EE49612006F4DFF /* DefaultAudioDevice.swift in Sources */,
 				952ED9A81EDF855200B2CE9A /* AppDelegate.swift in Sources */,
+				9536E6C81EE4A4CB006F4DFF /* CustomizedPublisher.swift in Sources */,
+				9536E6CC1EE4A511006F4DFF /* CustomizedVideoRender.swift in Sources */,
+				9536E6CE1EE4A5A6006F4DFF /* EAGLVideoRenderer.swift in Sources */,
+				9536E6D01EE4B2EA006F4DFF /* MultipartyLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

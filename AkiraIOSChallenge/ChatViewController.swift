@@ -40,14 +40,6 @@ class ChatViewController: UIViewController {
         
         let session = URLSession.shared
         
-        
-//        let params = ["username":"username", "password":"password"] as Dictionary<String, String>
-//        
-//        request.httpBody = try? JSONSerialization.data(withJSONObject: params, options: [])
-//        
-//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        
         let task = session.dataTask(with: request as URLRequest, completionHandler: {data, response, error -> Void in
             print("Response: \(String(describing: response))")
             
@@ -69,35 +61,7 @@ class ChatViewController: UIViewController {
         })
         
         task.resume()
-        
-//        NSURLConnection.sendAsynchronousRequest(request, queue: OperationQueue.main, completionHandler: {(_ response: URLResponse, _ data: Data, _ error: Error?) -> Void in
-//            if error != nil {
-//                print("Error,\(error?.localizedDescription), URL: \(urlPath)")
-//            }
-//            else {
-//                let roomInfo: [AnyHashable: Any]? = try? JSONSerialization.jsonObject(withData: data, options: kNilOptions)
-//                self.apiKey = (roomInfo?["apiKey"] as? String)
-//                self.token = (roomInfo?["token"] as? String)
-//                self.sessionId = (roomInfo?["sessionId"] as? String)
-//                if !self.apiKey || !self.token || !self.sessionId {
-//                    print("Error invalid response from server, URL: \(urlPath)")
-//                }
-//                else {
-//                    self.doConnect()
-//                }
-//            }
-//        })
     }
-    
-//    func shouldAutorotate(to interfaceOrientation: UIInterfaceOrientation) -> Bool {
-//        // Return YES for supported orientations
-//        if .phone == UIDevice.current.userInterfaceIdiom {
-//            return false
-//        }
-//        else {
-//            return true
-//        }
-//    }
     
     // MARK: - OpenTok methods
     func doConnect() {
