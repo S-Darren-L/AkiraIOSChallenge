@@ -9,12 +9,6 @@
 import UIKit
 import OpenTok
 
-// Replace with your OpenTok API key
-let kApiKey = "45880472"
-// Replace with your generated session ID
-let kSessionId = "1_MX40NTg4MDQ3Mn5-MTQ5NjI5MDA1MDM1Mn5ZeGNRbTQ1QVRWUHoxdUdWMHU3bk1LVDd-fg"
-// Replace with your generated token
-let kToken = "T1==cGFydG5lcl9pZD00NTg4MDQ3MiZzaWc9MmQ5ZmQ1MjU0ZmM3Y2RlNTJiNzgwNWExZTNhMDExNTQ5NTdlNThkODpzZXNzaW9uX2lkPTFfTVg0ME5UZzRNRFEzTW41LU1UUTVOakk1TURBMU1ETTFNbjVaZUdOUmJUUTFRVlJXVUhveGRVZFdNSFUzYmsxTFZEZC1mZyZjcmVhdGVfdGltZT0xNDk2MjkwMDgwJm5vbmNlPTAuMjAwNTIyNTc4NzkyMzY4MTImcm9sZT1wdWJsaXNoZXImZXhwaXJlX3RpbWU9MTQ5ODg4MjA4MA=="
 
 class VideoViewController: UIViewController {
     
@@ -23,10 +17,12 @@ class VideoViewController: UIViewController {
     @IBOutlet var muteMicButton: UIButton!
     @IBOutlet var userName: UILabel!
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var topLableView: UIView!
+    @IBOutlet var bottomControlView: UIView!
     
     var subscribers: [IndexPath: OTSubscriber] = [:]
     lazy var session: OTSession = {
-        return OTSession(apiKey: kApiKey, sessionId: kSessionId, delegate: self)!
+        return OTSession(apiKey: Constants.kApiKey, sessionId: Constants.kSessionId, delegate: self)!
     }()
     lazy var publisher: OTPublisher = {
         let settings = OTPublisherSettings()
@@ -42,11 +38,11 @@ class VideoViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
-            return
-        }
-        layout.itemSize = CGSize(width: collectionView.bounds.size.width / 2,
-                                 height: collectionView.bounds.size.height / 2)
+//        guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
+//            return
+//        }
+//        layout.itemSize = CGSize(width: collectionView.bounds.size.width / 2,
+//                                 height: collectionView.bounds.size.height / 2)
     }
     
     @IBAction func swapCameraAction(_ sender: UIButton) {
@@ -75,9 +71,21 @@ class VideoViewController: UIViewController {
         session.disconnect(&error)
     }
     
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        reloadCollectionView()
+    }
+    
     func reloadCollectionView() {
         collectionView.isHidden = subscribers.count == 0
         collectionView.reloadData()
+    }
+    
+    func isPortrait() -> Bool{
+        if UIDevice.current.orientation == UIDeviceOrientation.portrait {
+            return true
+        }else{
+            return false
+        }
     }
 }
 
@@ -137,7 +145,7 @@ extension VideoViewController{/**
         defer {
             processError(error: error)
         }
-        session.connect(withToken: kToken, error: &error)
+        session.connect(withToken: Constants.kToken, error: &error)
     }
     
     /**
@@ -152,8 +160,14 @@ extension VideoViewController{/**
         endCallButton.isEnabled = true
         
         if let pubView = publisher.view {
-            let publisherDimensions = CGSize(width: view.bounds.size.width / 4,
-                                             height: view.bounds.size.height / 6)
+            var publisherDimensions = CGSize()
+            if isPortrait(){
+                publisherDimensions = CGSize(width: view.bounds.size.height / 6,
+                                                 height: view.bounds.size.height / 4)
+            }else{
+                publisherDimensions = CGSize(width: view.bounds.size.width / 6,
+                                             height: view.bounds.size.width / 4)
+            }
             pubView.frame = CGRect(origin: CGPoint(x:collectionView.bounds.size.width - publisherDimensions.width,
                                                    y:collectionView.bounds.size.height - publisherDimensions.height + collectionView.frame.origin.y),
                                    size: publisherDimensions)
