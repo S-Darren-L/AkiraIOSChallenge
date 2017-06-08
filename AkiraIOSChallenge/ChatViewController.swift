@@ -48,7 +48,7 @@ class ChatViewController: SLKTextViewController {
             print("Response: \(String(describing: response))")
             
             if error != nil {
-                print("Error,\(error?.localizedDescription), URL: \(urlPath)")
+                print("Error,\(String(describing: error?.localizedDescription)), URL: \(urlPath)")
             }
             else {
                 let roomInfo: [AnyHashable: Any]? = try? JSONSerialization.jsonObject(with: data!) as! [String:Any]
@@ -88,15 +88,15 @@ class ChatViewController: SLKTextViewController {
     func doConnect() {
         // Initialize a new instance of OTSession and begin the connection process.
         appSession = OTSession(apiKey: apiKey, sessionId: sessionId, delegate: self as?OTSessionDelegate)
-        var error: AutoreleasingUnsafeMutablePointer<OTError?>? = nil
+        let error: AutoreleasingUnsafeMutablePointer<OTError?>? = nil
         try? appSession?.connect(withToken: token, error: error)
         if error != nil {
-            print("Unable to connect to session (\(error))")
+            print("Unable to connect to session (\(String(describing: error)))")
         }
     }
     
     func sendChatMessage(message: String) {
-        var error: AutoreleasingUnsafeMutablePointer<OTError?>? = nil
+        let error: AutoreleasingUnsafeMutablePointer<OTError?>? = nil
         try? appSession?.signal(withType: "chat", string: message, connection: nil, error: error)
         if error != nil {
             print("Signal error: \(String(describing: error))")
@@ -104,7 +104,6 @@ class ChatViewController: SLKTextViewController {
         else {
             print("Signal sent: \(String(describing: message))")
         }
-//        chatInputTextField.text = ""
     }
     
     func logSignal(_ message: Message) {
@@ -185,12 +184,12 @@ extension ChatViewController: OTSessionDelegate {
     }
     
     func session(_ session: OTSession, receivedSignalType type: String?, from connection: OTConnection?, with messageText: String?) {
-        print("Received signal \(messageText)")
+        print("Received signal \(String(describing: messageText))")
         var fromSelf = false
         if (connection?.connectionId == session.connection?.connectionId) {
             fromSelf = true
         }
-        var message = Message(messageText: messageText!, senderID: (connection?.connectionId)!, fromSelf: fromSelf)
+        let message = Message(messageText: messageText!, senderID: (connection?.connectionId)!, fromSelf: fromSelf)
         logSignal(message)
     }
 }
