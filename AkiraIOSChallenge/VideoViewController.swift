@@ -15,9 +15,7 @@ class VideoViewController: UIViewController {
     @IBOutlet var endCallButton: UIButton!
     @IBOutlet var swapCameraButton: UIButton!
     @IBOutlet var muteMicButton: UIButton!
-    @IBOutlet var userName: UILabel!
     @IBOutlet var collectionView: UICollectionView!
-    @IBOutlet var topLableView: UIView!
     @IBOutlet var bottomControlView: UIView!
     
     var subscribers: [IndexPath: OTSubscriber] = [:]
@@ -26,23 +24,22 @@ class VideoViewController: UIViewController {
     }()
     lazy var publisher: OTPublisher = {
         let settings = OTPublisherSettings()
-        settings.name = UIDevice.current.name
         return OTPublisher(delegate: self, settings: settings)!
     }()
     var error: OTError?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = UIDevice.current.name    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         doConnect()
-        userName.text = UIDevice.current.name
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-//        guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
-//            return
-//        }
-//        layout.itemSize = CGSize(width: collectionView.bounds.size.width / 2,
-//                                 height: collectionView.bounds.size.height / 2)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        session.disconnect(&error)
     }
     
     @IBAction func swapCameraAction(_ sender: UIButton) {

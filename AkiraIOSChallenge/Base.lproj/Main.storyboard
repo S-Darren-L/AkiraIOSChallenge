@@ -20,8 +20,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="3Ax-mG-Sym"/>
-                        <segue destination="hRR-r9-R7O" kind="relationship" relationship="viewControllers" id="JFC-mx-DKu"/>
+                        <segue destination="4qI-ha-GQU" kind="relationship" relationship="viewControllers" id="BjX-ij-8SG"/>
+                        <segue destination="k6y-9Z-F7m" kind="relationship" relationship="viewControllers" id="2P4-PK-4N5"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DJx-pa-d8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -29,6 +29,23 @@
             <point key="canvasLocation" x="-1437" y="-336"/>
         </scene>
         <!--Chat-->
+        <scene sceneID="mgD-1s-ZsK">
+            <objects>
+                <navigationController id="4qI-ha-GQU" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Chat" image="ic_chat" id="czS-ko-xFC"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="d1M-zt-yEF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="hRR-r9-R7O" kind="relationship" relationship="rootViewController" id="3OO-iV-T5r"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pfQ-w7-f46" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1137" y="454"/>
+        </scene>
+        <!--Chat View Controller-->
         <scene sceneID="P2B-yQ-SqR">
             <objects>
                 <viewController id="hRR-r9-R7O" customClass="ChatViewController" customModule="AkiraIOSChallenge" customModuleProvider="target" sceneMemberID="viewController">
@@ -41,13 +58,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Chat" image="ic_chat" id="aIx-tq-XXi"/>
+                    <navigationItem key="navigationItem" id="cik-Vw-aVx"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgx-PQ-BSX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-602.39999999999998" y="97.601199400299862"/>
+            <point key="canvasLocation" x="-135" y="115"/>
         </scene>
-        <!--Video-->
+        <!--Video View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="VideoViewController" customModule="AkiraIOSChallenge" customModuleProvider="target" sceneMemberID="viewController">
@@ -66,8 +83,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6Go-JU-8cG">
-                                <rect key="frame" x="0.0" y="50" width="375" height="515"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="501"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="501" id="l7K-kI-jma"/>
+                                </constraints>
                                 <collectionViewLayout key="collectionViewLayout" id="rof-7k-mHg" customClass="MultipartyLayout" customModule="AkiraIOSChallenge" customModuleProvider="target"/>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="subscriberCell" id="wXo-xL-BeS" customClass="SubscriberCollectionCell" customModule="AkiraIOSChallenge" customModuleProvider="target">
@@ -155,58 +175,49 @@
                                     <constraint firstItem="rCO-PU-Wnd" firstAttribute="centerY" secondItem="UD6-F4-Vr1" secondAttribute="centerY" id="pV4-cZ-zqj"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vaF-O4-oPV">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XP7-OY-kyc">
-                                        <rect key="frame" x="62.5" y="14.5" width="250" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="250" id="DoS-9a-Ezd"/>
-                                            <constraint firstAttribute="height" constant="21" id="xZv-D1-5so"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Mh3-mb-cZd"/>
-                                    <constraint firstItem="XP7-OY-kyc" firstAttribute="centerX" secondItem="vaF-O4-oPV" secondAttribute="centerX" id="Ong-8X-mOb"/>
-                                    <constraint firstItem="XP7-OY-kyc" firstAttribute="centerY" secondItem="vaF-O4-oPV" secondAttribute="centerY" id="Qfy-G2-cKw"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Go-JU-8cG" firstAttribute="width" secondItem="wDh-SL-7iG" secondAttribute="width" id="3wh-g2-Egy"/>
-                            <constraint firstItem="vaF-O4-oPV" firstAttribute="width" secondItem="wDh-SL-7iG" secondAttribute="width" id="7jT-kP-2ql"/>
                             <constraint firstItem="UD6-F4-Vr1" firstAttribute="width" secondItem="wDh-SL-7iG" secondAttribute="width" id="FgQ-62-eDE"/>
-                            <constraint firstItem="vaF-O4-oPV" firstAttribute="top" secondItem="X94-NS-HrZ" secondAttribute="bottom" constant="-20" id="Grg-3f-DwW"/>
-                            <constraint firstItem="UD6-F4-Vr1" firstAttribute="top" secondItem="6Go-JU-8cG" secondAttribute="bottom" id="OTD-TE-W10"/>
-                            <constraint firstItem="6Go-JU-8cG" firstAttribute="top" secondItem="vaF-O4-oPV" secondAttribute="bottom" id="dNh-kt-H8Z"/>
                             <constraint firstItem="HTF-Rx-zKO" firstAttribute="centerY" secondItem="wDh-SL-7iG" secondAttribute="centerY" id="eAA-Sz-qEd"/>
-                            <constraint firstItem="vaF-O4-oPV" firstAttribute="centerX" secondItem="wDh-SL-7iG" secondAttribute="centerX" id="gfW-6K-A0U"/>
                             <constraint firstItem="FgZ-CF-2hH" firstAttribute="top" secondItem="UD6-F4-Vr1" secondAttribute="bottom" constant="3" id="iAX-cP-oSX"/>
                             <constraint firstItem="UD6-F4-Vr1" firstAttribute="centerX" secondItem="wDh-SL-7iG" secondAttribute="centerX" id="jjt-ga-VSN"/>
+                            <constraint firstItem="6Go-JU-8cG" firstAttribute="top" secondItem="X94-NS-HrZ" secondAttribute="bottom" id="jqt-HB-O2N"/>
                             <constraint firstItem="HTF-Rx-zKO" firstAttribute="centerX" secondItem="wDh-SL-7iG" secondAttribute="centerX" id="nLI-HS-dMU"/>
+                            <constraint firstItem="UD6-F4-Vr1" firstAttribute="top" secondItem="6Go-JU-8cG" secondAttribute="bottom" id="wKX-X6-KZy"/>
                             <constraint firstItem="6Go-JU-8cG" firstAttribute="centerX" secondItem="wDh-SL-7iG" secondAttribute="centerX" id="zBF-Yo-ed6"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Video" image="ic_video_chat" id="a7x-Gs-2j5"/>
+                    <navigationItem key="navigationItem" id="59c-pA-JpH"/>
                     <connections>
                         <outlet property="bottomControlView" destination="UD6-F4-Vr1" id="5o7-Ps-TBq"/>
                         <outlet property="collectionView" destination="6Go-JU-8cG" id="GNN-jp-8Is"/>
                         <outlet property="endCallButton" destination="7YK-jt-Rpq" id="6GU-xh-teB"/>
                         <outlet property="muteMicButton" destination="rCO-PU-Wnd" id="l4r-Zy-IiH"/>
                         <outlet property="swapCameraButton" destination="lyP-JS-kdz" id="sFl-z3-Unz"/>
-                        <outlet property="topLableView" destination="vaF-O4-oPV" id="Bfw-Uo-rcI"/>
-                        <outlet property="userName" destination="XP7-OY-kyc" id="V8O-e9-3sY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-602.39999999999998" y="-646.32683658170924"/>
+            <point key="canvasLocation" x="149.59999999999999" y="-528.48575712143929"/>
+        </scene>
+        <!--Video-->
+        <scene sceneID="5On-Yp-WZn">
+            <objects>
+                <navigationController id="k6y-9Z-F7m" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Video" image="ic_video_chat" id="rE8-fB-F2e"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pL9-B9-3lT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="8jO-QV-5ck"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NoU-G7-rWF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-658" y="-563"/>
         </scene>
     </scenes>
     <resources>

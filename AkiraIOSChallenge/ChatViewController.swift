@@ -16,7 +16,7 @@ class ChatViewController: SLKTextViewController {
         return super.tableView!
     }
     
-    lazy var messages = [String]()
+    lazy var messages = [Message]()
     
     private var appSession: OTSession?
     private var publisher: OTPublisher?
@@ -31,6 +31,7 @@ class ChatViewController: SLKTextViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getSessionCredentials()
+        self.navigationItem.title = UIDevice.current.name
         initChatView()
     }
     
@@ -90,7 +91,7 @@ class ChatViewController: SLKTextViewController {
         var error: AutoreleasingUnsafeMutablePointer<OTError?>? = nil
         try? appSession?.connect(withToken: token, error: error)
         if error != nil {
-//            print("Unable to connect to session (\(error?.localizedDescription))")
+            print("Unable to connect to session (\(error))")
         }
     }
     
@@ -106,8 +107,8 @@ class ChatViewController: SLKTextViewController {
 //        chatInputTextField.text = ""
     }
     
-    func logSignal(_ message: String, fromSelf: Bool) {
-        print("received message is: \(message)")
+    func logSignal(_ message: Message) {
+        print("received message is: \(message.messageText)")
         messages.append(message)
         self.tableView.reloadData()
     }
@@ -124,7 +125,6 @@ extension ChatViewController {
         textView.refreshFirstResponder()
         let text = textView.text
         sendChatMessage(message: text!)
-//        self.tableView.reloadData()
         super.didPressRightButton(sender)
     }
 }
@@ -139,8 +139,14 @@ extension ChatViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let message = messages[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") ?? UITableViewCell(style: .default , reuseIdentifier: "Cell")
+        if message.fromSelf == true {
+            cell.textLabel?.textAlignment = .right
+        } else {
+            cell.textLabel?.textAlignment = .left
+        }
+
         cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.text = message
+        cell.textLabel?.text = message.messageText
         cell.selectionStyle = .none
         cell.transform = tableView.transform
         return cell
@@ -178,13 +184,14 @@ extension ChatViewController: OTSessionDelegate {
         print("A stream was destroyed in the session.")
     }
     
-    func session(_ session: OTSession, receivedSignalType type: String?, from connection: OTConnection?, with string: String?) {
-        print("Received signal \(string)")
-        var fromSelf: Bool = false
+    func session(_ session: OTSession, receivedSignalType type: String?, from connection: OTConnection?, with messageText: String?) {
+        print("Received signal \(messageText)")
+        var fromSelf = false
         if (connection?.connectionId == session.connection?.connectionId) {
             fromSelf = true
         }
-        logSignal(string!, fromSelf: fromSelf)
+        var message = Message(messageText: messageText!, senderID: (connection?.connectionId)!, fromSelf: fromSelf)
+        logSignal(message)
     }
 }
 
