@@ -75,6 +75,7 @@ class ChatViewController: SLKTextViewController {
         tableView.estimatedRowHeight = 44
         tableView.tableHeaderView = UIView()
         tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .none
         
         textInputbar.autoHideRightButton = false
         textInputbar.backgroundColor = .lightGray
