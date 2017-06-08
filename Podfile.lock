@@ -1,12 +1,15 @@
 PODS:
   - OpenTok (2.11.0)
+  - SlackTextViewController (1.9.5)
 
 DEPENDENCIES:
   - OpenTok
+  - SlackTextViewController
 
 SPEC CHECKSUMS:
   OpenTok: 329d04317e02cc018b8faf5851b921b87bd9562b
+  SlackTextViewController: fbcdadbb8090673f604484ff5b6eb8d77baed42a
 
-PODFILE CHECKSUM: 2cff0bf9641638117c824ba5c6701c95ba058280
+PODFILE CHECKSUM: fe3600d8546946e9f654bc7fc3af3ddc77b4c195
 
 COCOAPODS: 1.2.1

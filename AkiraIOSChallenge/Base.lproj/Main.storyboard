@@ -39,59 +39,9 @@
                     <view key="view" contentMode="scaleToFill" id="SiJ-P2-Jy9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TaM-ET-u25">
-                                <rect key="frame" x="16" y="20" width="343" height="537"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aIh-V8-U7A">
-                                <rect key="frame" x="0.0" y="578" width="375" height="40"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gkt-Tb-ovS">
-                                        <rect key="frame" x="295" y="5" width="55" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="0A4-6Z-U4K"/>
-                                            <constraint firstAttribute="width" constant="55" id="R5g-6H-KSH"/>
-                                        </constraints>
-                                        <state key="normal" title="Send"/>
-                                    </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yQB-s9-aoh">
-                                        <rect key="frame" x="25" y="5" width="255" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="EJb-Q4-V3a"/>
-                                        </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Gkt-Tb-ovS" secondAttribute="trailing" constant="25" id="Kff-WU-dHW"/>
-                                    <constraint firstItem="yQB-s9-aoh" firstAttribute="leading" secondItem="aIh-V8-U7A" secondAttribute="leading" constant="25" id="RVL-Mn-YpL"/>
-                                    <constraint firstItem="Gkt-Tb-ovS" firstAttribute="centerY" secondItem="aIh-V8-U7A" secondAttribute="centerY" id="ZnG-S0-2C2"/>
-                                    <constraint firstItem="yQB-s9-aoh" firstAttribute="centerY" secondItem="aIh-V8-U7A" secondAttribute="centerY" id="a4t-E8-63w"/>
-                                    <constraint firstItem="Gkt-Tb-ovS" firstAttribute="leading" secondItem="yQB-s9-aoh" secondAttribute="trailing" constant="15" id="tCB-lL-8Kb"/>
-                                    <constraint firstAttribute="height" constant="40" id="v0P-Jh-bgb"/>
-                                </constraints>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="aIh-V8-U7A" firstAttribute="width" secondItem="SiJ-P2-Jy9" secondAttribute="width" id="ZFO-hO-Cnp"/>
-                            <constraint firstItem="Idz-hp-INE" firstAttribute="top" secondItem="aIh-V8-U7A" secondAttribute="bottom" id="nq4-aU-jSK"/>
-                            <constraint firstItem="aIh-V8-U7A" firstAttribute="centerX" secondItem="SiJ-P2-Jy9" secondAttribute="centerX" id="uYa-1C-HsE"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Chat" image="ic_chat" id="aIx-tq-XXi"/>
-                    <connections>
-                        <outlet property="chatInputTextField" destination="yQB-s9-aoh" id="pK6-zu-bzl"/>
-                        <outlet property="chatReceivedTextView" destination="TaM-ET-u25" id="25p-Bu-eAN"/>
-                        <outlet property="sendButton" destination="Gkt-Tb-ovS" id="mTN-4z-srW"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgx-PQ-BSX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -8,12 +8,15 @@
 
 import UIKit
 import OpenTok
+import SlackTextViewController
 
-class ChatViewController: UIViewController {
+class ChatViewController: SLKTextViewController {
     
-    @IBOutlet var chatReceivedTextView: UITextView!
-    @IBOutlet var chatInputTextField: UITextField!
-    @IBOutlet var sendButton: UIButton!
+    override var tableView: UITableView {
+        return super.tableView!
+    }
+    
+    lazy var messages = [String]()
     
     private var appSession: OTSession?
     private var publisher: OTPublisher?
@@ -27,8 +30,8 @@ class ChatViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        chatInputTextField.delegate = self
         getSessionCredentials()
+        initChatView()
     }
     
     func getSessionCredentials() {
@@ -63,6 +66,23 @@ class ChatViewController: UIViewController {
         task.resume()
     }
     
+    func initChatView() {
+        isInverted = false
+        shakeToClearEnabled = true
+        shouldScrollToBottomAfterKeyboardShows = true
+        
+        tableView.estimatedRowHeight = 44
+        tableView.tableHeaderView = UIView()
+        tableView.tableFooterView = UIView()
+        
+        textInputbar.autoHideRightButton = false
+        textInputbar.backgroundColor = .lightGray
+        textInputbar.rightButton.tintColor = .black
+        
+        textView.backgroundColor = .white
+        textView.layer.borderWidth = 0
+    }
+    
     // MARK: - OpenTok methods
     func doConnect() {
         // Initialize a new instance of OTSession and begin the connection process.
@@ -74,31 +94,56 @@ class ChatViewController: UIViewController {
         }
     }
     
-    func sendChatMessage() {
+    func sendChatMessage(message: String) {
         var error: AutoreleasingUnsafeMutablePointer<OTError?>? = nil
-        try? appSession?.signal(withType: "chat", string: chatInputTextField.text!, connection: nil, error: error)
+        try? appSession?.signal(withType: "chat", string: message, connection: nil, error: error)
         if error != nil {
             print("Signal error: \(String(describing: error))")
         }
         else {
-            print("Signal sent: \(String(describing: chatInputTextField.text))")
+            print("Signal sent: \(String(describing: message))")
         }
-        chatInputTextField.text = ""
+//        chatInputTextField.text = ""
     }
     
-    func logSignal(_ string: String, fromSelf: Bool) {
-        print("received message is: \(string)")
-        let prevLength: Int = chatReceivedTextView.text.characters.count - 1
-        chatReceivedTextView.insertText(string)
-        chatReceivedTextView.insertText("\n")
-        if fromSelf {
-            let formatDict: [AnyHashable: Any] = [NSForegroundColorAttributeName: UIColor.blue]
-            let textRange = NSRange(location: prevLength + 1, length:
-                (string.characters.count))
-            chatReceivedTextView.textStorage.setAttributes(formatDict as? [String : Any], range: textRange)
-        }
-        chatReceivedTextView.setContentOffset(chatReceivedTextView.contentOffset, animated: false)
-        chatReceivedTextView.scrollRangeToVisible(NSRange(location: chatReceivedTextView.text.characters.count, length: 0))
+    func logSignal(_ message: String, fromSelf: Bool) {
+        print("received message is: \(message)")
+        messages.append(message)
+        self.tableView.reloadData()
+    }
+}
+
+// MARK: - SlackTextViewController
+extension ChatViewController {
+    
+    override class func tableViewStyle(for decoder: NSCoder) -> UITableViewStyle {
+        return .plain
+    }
+    
+    override func didPressRightButton(_ sender: Any?) {
+        textView.refreshFirstResponder()
+        let text = textView.text
+        sendChatMessage(message: text!)
+//        self.tableView.reloadData()
+        super.didPressRightButton(sender)
+    }
+}
+
+// MARK: - UITableViewDataSource
+extension ChatViewController {
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messages.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let message = messages[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") ?? UITableViewCell(style: .default , reuseIdentifier: "Cell")
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.text = message
+        cell.selectionStyle = .none
+        cell.transform = tableView.transform
+        return cell
     }
 }
 
@@ -158,19 +203,5 @@ extension ChatViewController: OTSubscriberDelegate {
     
     func subscriber(_ subscriber: OTSubscriberKit, didFailWithError error: OTError) {
         print("subscriber \(String(describing: subscriber.stream?.streamId)) didFailWithError \(error)")
-    }
-}
-
-// MARK: - UITextFieldDelegate callbacks
-extension ChatViewController: UITextFieldDelegate{
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        chatInputTextField.text = ""
-        return true
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        sendChatMessage()
-        view.endEditing(true)
-        return true
     }
 }

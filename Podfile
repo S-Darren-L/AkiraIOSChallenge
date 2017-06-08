@@ -7,6 +7,7 @@ target 'AkiraIOSChallenge' do
 
   # Pods for AkiraIOSChallenge
   pod ‘OpenTok’
+  pod 'SlackTextViewController'
 
   target 'AkiraIOSChallengeTests' do
     inherit! :search_paths
